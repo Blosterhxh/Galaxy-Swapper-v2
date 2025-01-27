@@ -2,6 +2,7 @@
 
 namespace Galaxy_Swapper_v2.Workspace.Hashes
 {
+    // Manipulation sur des ulong avec des méthodes qui s'appellent Hash
     public static class CityHash
     {
         // Copyright (c) 2011 Google, Inc.
