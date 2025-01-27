@@ -16,13 +16,16 @@ namespace Galaxy_Swapper_v2.Workspace.Generation.Types
             var OverrideOptions = new List<Option>();
 
             if (Parse["OverrideOptions"] != null && (Parse["OverrideOptions"] as JArray).Any())
-            {
+            {   
+            //On parcourt les OverrideOptions d'un cosmétique
                 foreach (var Override in Parse["OverrideOptions"])
                 {
                     switch (Override["Type"].Value<string>())
-                    {
+                    { 
+                    // Si le type de l'override est exception
                         case "Exception":
-                            {
+                            {   
+                            // On ajoute un Override dans le OverrideOptions en utilisant un générateur
                                 var OverrideCosmetic = Generate.Cache[CacheType].Cosmetics[Override["CacheKey"].Value<string>()];
                                 OverrideOptions.Add(new Option
                                 {
@@ -34,7 +37,9 @@ namespace Galaxy_Swapper_v2.Workspace.Generation.Types
                             }
                             break;
                         case "Override":
+                        //Si le type de l'override est override
                             {
+                                // Nouvelle Option en utilisant les valeurs de l'override
                                 var NewOption = new Option
                                 {
                                     Name = $"{Override["Name"].Value<string>()} to {Cosmetic.Name}",
@@ -42,6 +47,8 @@ namespace Galaxy_Swapper_v2.Workspace.Generation.Types
                                     OverrideIcon = Cosmetic.Icon,
                                     Parse = null // Not needed we will never use it
                                 };
+
+                                // La suite initialise les attributs de la nouvelle option
 
                                 if (Override["Message"] != null)
                                     NewOption.Message = Override["Message"].Value<string>();
@@ -125,6 +132,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation.Types
 
                 foreach (var option in parse["Swaps"])
                 {
+                    // On initialise les attributs de NewOption, puis on ajoute NewOption à Cosmetic.Options
                     var NewOption = new Option
                     {
                         Name = $"{option["Name"].Value<string>()} to {Cosmetic.Name}",
