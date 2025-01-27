@@ -10,6 +10,7 @@ using System.Text;
 
 namespace Galaxy_Swapper_v2.Workspace.Plugins
 {
+    // Une méthode de compression et de décompression, ainsi qu'une méthode permettant de générer une clé aléatoire
     public static class Compression
     {
         public enum Type
