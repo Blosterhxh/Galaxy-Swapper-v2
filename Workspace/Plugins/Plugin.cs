@@ -12,9 +12,11 @@ using System.Text;
 
 namespace Galaxy_Swapper_v2.Workspace.Plugins
 {
+    // La classe permet de compresser des fichiers en .plugin et de les décompresser
     public static class Plugin
     {
         public static readonly string Path = $"{App.Config}\\Plugins";
+        //Le fichier est compressé et enregistré en tant que .plugin
         public static void Import(FileInfo fileInfo, JObject parse)
         {
             var writer = new Writer(new byte[fileInfo.Length + 60000]);
@@ -59,6 +61,7 @@ namespace Galaxy_Swapper_v2.Workspace.Plugins
             Log.Information($"Plugin wrote to: {output}");
         }
 
+        // Méthode inverse, décompresse le .plugin
         public static PluginData Export(FileInfo fileInfo)
         {
             var reader = new Reader(File.ReadAllBytes(fileInfo.FullName));
@@ -79,6 +82,7 @@ namespace Galaxy_Swapper_v2.Workspace.Plugins
             return new() { Import = importpath, Path = fileInfo.FullName, Content = decompressed, Parse = parse };
         }
 
+        // Pareil
         public static PluginData ExportOld(FileInfo fileInfo)
         {
             string content = File.ReadAllText(fileInfo.FullName);
@@ -95,6 +99,7 @@ namespace Galaxy_Swapper_v2.Workspace.Plugins
             return new() { Import = null!, Path = fileInfo.FullName, Content = content, Parse = parse };
         }
 
+        // Renvoie une liste de tous les plugins décompressés
         public static List<PluginData> GetPlugins()
         {
             var list = new List<PluginData>();
