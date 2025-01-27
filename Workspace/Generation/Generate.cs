@@ -29,6 +29,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
         public static string Domain { get; set; } = default!;
         public static Dictionary<Type, Frontend> Cache = new Dictionary<Type, Frontend>();
         public static Dictionary<string, Cosmetic> Frontend(Type Type)
+        // Cette méthode place les Cosmétiques dans un cache, apparement pour un traitement ultérieur
         {
             if (!Cache.ContainsKey(Type))
             {
@@ -161,7 +162,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
             }
             return Cache[Type].Cosmetics;
         }
-
+        // Les données du JToken parse sont transférés à l'Asset asset
         public static void AddMaterialOverridesArray(JToken parse, Asset asset)
         {
             if (parse["MaterialOverridesArray"] is not null)
@@ -195,6 +196,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
             }
         }
 
+        // Pareil
         public static void AddTextureParametersArray(JToken parse, Asset asset)
         {
             if (parse["TextureParametersArray"] is not null)
@@ -217,6 +219,8 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
             }
         }
 
+    
+        // Créé une liste des options pour un cosmétique en utilisant la méthode Format
         public static List<Option> Options(string Key, Type Type)
         {
             if (Cache[Type].Cosmetics[Key].Options.Count == 0)
@@ -249,6 +253,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
             return Cache[Type].Cosmetics[Key].Options;
         }
 
+        // Retourne le code hexadécimal de name
         public static string CreateNameSwap(string name)
         {
             var writer = new Writer(new byte[sizeof(int) + name.Length + 1]);
@@ -260,6 +265,7 @@ namespace Galaxy_Swapper_v2.Workspace.Generation
             return Misc.ByteToHex(writer.ToByteArray(writer.Position));
         }
 
+        // Le nom est écrit en ASCII puis des Bytes sont rajoutés pour atteindre la taille length avant la conversion en hexadécimal
         public static string CreateNameSwapWithoutAnyLength(string name, int length)
         {
             var writer = new Writer(new byte[length]);
