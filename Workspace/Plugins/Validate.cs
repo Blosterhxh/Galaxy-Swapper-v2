@@ -6,6 +6,7 @@ using System.Windows;
 
 namespace Galaxy_Swapper_v2.Workspace.Plugins
 {
+    // Renvoie un booléen qui indique si un plugin est valide
     public static class Validate
     {
         public static bool IsValid(FileInfo fileInfo, out JObject parse)
@@ -129,6 +130,8 @@ namespace Galaxy_Swapper_v2.Workspace.Plugins
         }
 
         #region PluginTypes
+
+        // Validation à priori sur des attributs différents du plugin
         public static bool None(ref FileInfo fileInfo, ref JObject parse)
         {
             if (parse["Swapicon"].KeyIsNullOrEmpty())
@@ -178,6 +181,7 @@ namespace Galaxy_Swapper_v2.Workspace.Plugins
             return true;
         }
 
+        // Vérification similaire
         public static bool UEFN_Character(ref FileInfo fileInfo, ref JObject parse)
         {
             if (parse["AssetPathTo"].KeyIsNullOrEmpty())
