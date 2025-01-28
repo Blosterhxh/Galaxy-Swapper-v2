@@ -12,12 +12,17 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
     {
         public static readonly string Path = App.Config + "\\Binaries";
 
+        // Empreinte de hachage, nom du fichier binaire, chemi d'accès au fichier incorporé
         private static readonly List<BinaryData> BinaryData = new List<BinaryData>
         {
             //new BinaryData("8A06BB79F400AEC933CD8BADD5B63DF54DA5B02B95CF7C0EA29E0CDB40F72E6E", "oo2core_5_win64.dll", "Galaxy_Swapper_v2.Workspace.Assets.oo2core_5_win64.dll"), - No longer in use
             new BinaryData("6F5D41A7892EA6B2DB420F2458DAD2F84A63901C9A93CE9497337B16C195F457", "oo2core_9_win64.dll", "Galaxy_Swapper_v2.Workspace.Assets.oo2core_9_win64.dll"),
         };
 
+        // L'objectif de Initialize() est de :
+        // Configurer le chemin des bibliothèques dynamiques (DLL).
+        // Vérifier l'existence, l'intégrité et la disponibilité des fichiers binaires.
+        // Si nécessaire, supprimer et régénérer les fichiers à partir des ressources intégrées
         public static void Initialize()
         {
             Win32.SetDllDirectory(Path);
