@@ -64,6 +64,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return true;
         }
 
+        // L'objet Object créé par défaut, est affecté à la propriété statique Parse, permettant ainsi d'avoir accès à ces paramètres au sein de la classe Settings
+        // Le contenu de l'objet JObject (converti en chaîne JSON avec Object.ToString()) est écrit dans le fichier spécifié par Path.
         private static void Create()
         {
             var Object = JObject.FromObject(new
