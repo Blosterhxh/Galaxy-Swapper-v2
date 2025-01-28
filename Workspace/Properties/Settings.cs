@@ -29,6 +29,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             HeroDefinition,
             IsDev
         }
+        // Appelle Create() et Populate()
         public static void Initialize()
         {
             if (!IsValid())
