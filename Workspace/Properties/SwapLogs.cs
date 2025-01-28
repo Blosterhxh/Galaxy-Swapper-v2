@@ -46,6 +46,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             }
         }
 
+        // La méthode Add permet d'ajouter un nouvel objet (représentant un swap de ressources) au cache sous forme de JObject,
+        // puis écrase l'ancien cache avec le nouveau dans le JSON File.WriteAllText(Path, Cache.ToString())
         public static void Add(string Name, string Icon, string OverrideIcon, int AssetCount, List<string> UcasList, List<string> UtocList, bool UEFNFormat = false)
         {
             DateTime CurrentTime = DateTime.Now;
