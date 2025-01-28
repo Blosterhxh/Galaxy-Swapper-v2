@@ -4,6 +4,7 @@ using System.IO;
 
 namespace Galaxy_Swapper_v2.Workspace.Properties
 {
+    // Gestion des logs
     public static class Output
     {
         public static readonly string Path = $"{App.Config}\\Logs";
