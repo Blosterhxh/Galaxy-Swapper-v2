@@ -8,6 +8,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
     public static class ImageCache
     {
         public static readonly string Path = App.Config + "\\Cache";
+        // Création du répertoire à l'adresse Path
         public static void Initialize()
         {
             try
@@ -31,6 +32,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             }
         }
 
+        // Gère la mise en cache d'images sous forme de fichiers PNG dans un répertoire de cache défini par Path
         public static void Cache(string name, BitmapImage bitmapImage)
         {
             try
@@ -64,7 +66,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
                 Log.Error(exception.Message, $"Failed to write image cache to {Path}");
             }
         }
-
+        
+        // Lit une image en cache à partir d'un fichier et la charge dans un objet BitmapImage
         public static bool ReadCache(string name, BitmapImage bitmapImage)
         {
             try
