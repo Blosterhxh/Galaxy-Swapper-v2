@@ -101,7 +101,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
                 Log.Error(Exception, $"Failed to write settings file! Settings will now only be in memory");
             }
         }
-
+        
+        // La méthode Populate remplit un cache (Cache) avec des valeurs extraites d'un fichier de paramètres (Parse) et les stocke sous forme de paires clé-valeur. Chaque clé correspond à un membre de l'énumération Type
         public static void Populate()
         {
             try
@@ -120,6 +121,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             }
         }
 
+        // La méthode Read permet de lire une valeur du cache des paramètres (Cache) en fonction d'un membre de l'énumération Type. 
+        // Si la valeur n'est pas présente dans le cache, elle tente de recréer et de re-peupler le cache avant de récupérer la valeu
         public static JToken Read(Type Type)
         {
             if (Cache == null || !Cache.ContainsKey($"{Type}"))
@@ -131,6 +134,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return Cache[Type.ToString()];
         }
 
+        // La méthode Edit permet de modifier un paramètre spécifique dans le cache (Cache) et de mettre à jour le fichier de paramètres (Settings.json) en conséquence. 
+        // Si l'écriture dans le fichier échoue, la nouvelle valeur reste uniquement en mémoire
         public static void Edit(Type Key, JToken Value)
         {
             Cache[Key.ToString()] = Value;
