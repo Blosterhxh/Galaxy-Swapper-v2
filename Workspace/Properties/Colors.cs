@@ -1,8 +1,9 @@
 ﻿using Galaxy_Swapper_v2.Workspace.Utilities;
 using System.Windows.Media;
 
-namespace Galaxy_Swapper_v2.Workspace.Properties
+namespace Galaxy_Swapper_v2.Workspace.
 {
+    // Des définitions d'attribut de la classe couleur
     public static class Colors
     {
         public static readonly Color Main = "#090B0E".HexToColor();
