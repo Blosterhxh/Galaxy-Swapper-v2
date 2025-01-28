@@ -16,6 +16,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
     public static class Account
     {
         public static readonly string Path = $"{App.Config}\\Account.dat";
+        // Vérifie la validité du compte utilisateur lu depuis le Path
         public static bool Valid()
         {
             try
@@ -78,6 +79,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             }
         }
 
+        // Créé un account et supprime l'ancien account s'il y en avait déjà un
         public static bool Create(int days)
         {
             try
@@ -116,6 +118,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
         }
 
         private const string Domain = "https://galaxyswapperv2.com/Key/Valid.php";
+
+        // Activer un compte avec un nombre de jours spécifié
         public static bool Activate(string Activation)
         {
             var stopwatch = new Stopwatch(); stopwatch.Start();
