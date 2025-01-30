@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
 {
+    // Des méthodes de lecture
     public class Reader : BinaryReader
     {
         public long Length => base.BaseStream.Length;
@@ -23,16 +24,21 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
             }
         }
 
+        // L'objectif principal de cette classe est de fournir une couche supplémentaire pour lire des fichiers binaires
+        // tout en facilitant l'accès aux informations comme la taille, la position et le nom du fichier
         public Reader(string file)
             : base(File.Open(file, FileMode.Open, FileAccess.Read, FileShare.Read))
         {
             Name = file;
         }
 
+        // Ce constructeur crée un nouvel objet Reader à partir d'un tableau d'octets (byte[]).
+        // Il utilise MemoryStream pour lire directement à partir du tableau en mémoire
         public Reader(byte[] data) : base(new MemoryStream(data))
         {
         }
 
+        // Ajoute une position pour commencer la lecture en plus du constructeur précédent
         public Reader(byte[] data, long offset) : base(new MemoryStream(data))
         {
             Position = offset;
