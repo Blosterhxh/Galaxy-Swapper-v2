@@ -15,6 +15,9 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Providers
     {
         private const string Domain = "https://galaxyswapperv2.com/API/Fortnite/Aes.json";
         public static Dictionary<FGuid, FAesKey> Keys = new Dictionary<FGuid, FAesKey>();
+        // La classe AesProvider gère la récupération et le stockage de clés AES dynamiques 
+        // à partir d'une API externe. Elle initialise ces clés de manière sûre (en évitant les doublons)
+        // et les formate correctement pour être utilisées dans des opérations de chiffrement/déchiffrement.
         public static void Initialize()
         {
             if (Keys.Count != 0)
