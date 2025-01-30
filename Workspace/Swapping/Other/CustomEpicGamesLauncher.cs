@@ -48,6 +48,7 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
                 },
         };
 
+        // Remplace les cpatterns par des 0 dans EpicInstalltion
         public static void Convert()
         {
             string EpicInstalltion = Settings.Read(Settings.Type.EpicInstalltion).Value<string>();
@@ -83,6 +84,7 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
             }
         }
 
+        // Retéléchargement de EpicInstalltion depuis le github et suppression de l'actuel fichier sur l'ordinateur
         public static void Revert()
         {
             string EpicInstalltion = Settings.Read(Settings.Type.EpicInstalltion).Value<string>();
