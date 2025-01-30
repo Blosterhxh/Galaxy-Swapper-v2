@@ -11,6 +11,9 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
 {
     public static class Pakchunks
     {
+        // S'assure de la présence des fichiers essentiels .utoc
+        // Supprime les anciennes sauvegardes
+        // Créé des copies de ces fichiers essentiels et vérifie la validité de ces copies
         public static void Validate(string path)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -156,6 +159,7 @@ namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
             Log.Information($"Finished validating game files in {stopwatch.GetElaspedAndStop().TotalSeconds} seconds!");
         }
 
+        // Copie un fichier vers une destination, les deux étant passés en argument
         private static void Copy(DirectoryInfo directoryInfo, FileInfo orignalFileInfo, string dest, bool delete = false, bool overwrite = false)
         {
             if (delete)
