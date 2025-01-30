@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Galaxy_Swapper_v2.Workspace.Swapping.Other
 {
+    // Des méthodes d'écriture
     public class Writer : BinaryWriter
     {
         public long Position
