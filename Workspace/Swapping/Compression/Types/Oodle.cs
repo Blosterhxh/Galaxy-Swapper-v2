@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Galaxy_Swapper_v2.Workspace.Swapping.Compression.Types
 {
+    // Méthodes pour compresser et décompresser qui utilisent oodle
     public static class Oodle
     {
         [DllImport("oo2core_9_win64.dll")]
