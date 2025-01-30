@@ -18,6 +18,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
     {
         public static JObject Cache { get; set; } = default!;
         public static readonly string Path = $"{App.Config}\\UEFN.json";
+        // Initialisation du cache : Cache = JObject.Parse(Content)
         public static void Initialize()
         {
             if (Cache != null)
@@ -44,6 +45,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             Log.Information("Successfully initialized UEFN");
         }
 
+        // Mise à jour du cache avec les informatins du tag
         public static void DownloadMain(string paks, string tag)
         {
             var parse = Endpoint.Read(Endpoint.Type.UEFN);
@@ -128,6 +130,8 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             CProviderManager.InitUEFN();
         }
 
+        // Ajout d'un fichier externe à UEFN
+        // Mise à jour du cache
         public static void Add(string paks, string name, Downloadable downloadable)
         {
             //Dispose UEFN file provider so files aren't in use.
@@ -150,6 +154,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             CProviderManager.InitUEFN();
         }
 
+        // Téléchargement des fichiers dans un dossier temporaire, puis déplacement dans leur destination finale
         private static void Download(DirectoryInfo paks, List<Downloadable> downloadables, out List<string> usedslots)
         {
             var temp = new DirectoryInfo($"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Temp\\GalaxyDownloadables");
@@ -289,6 +294,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             Directory.Delete(temp.FullName, true);
         }
 
+        // Suppression des éléments du cache associés à name
         public static void Remove(string name)
         {
             if (Cache["Externals"] is null)
@@ -314,6 +320,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             Log.Information($"Wrote UEFN cache to {Path}");
         }
 
+        // Supprime tous les fichiers
         public static void Clear(string paks, bool main = true, bool externals = true)
         {
             //Add a if check since we changed the main to pakchunk and not downloadables slots
@@ -351,6 +358,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             File.WriteAllText(Path, Cache.ToString());
         }
 
+        // Créé un nouveau cache vide
         private static void Reset()
         {
             Cache = JObject.FromObject(new
@@ -362,6 +370,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
         }
 
         #region Utils
+        // Renvoie une liste de slots disponibles
         private static List<string> FindOpenSlots(string paks)
         {
             var available = new List<string>();
@@ -379,6 +388,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return available;
         }
 
+        // Supprime les extensions données en argument
         public static bool Delete(string path, string[] extensions)
         {
             foreach (string extension in extensions)
@@ -392,6 +402,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return true;
         }
 
+        // Supprime le fichier du path
         public static bool Delete(string path)
         {
             var fileInfo = new FileInfo(path);
@@ -411,6 +422,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return true;
         }
 
+        // Vérifie l'existence des extensions passées en argument
         public static bool Exist(string path, string[] extensions)
         {
             foreach (string extension in extensions)
@@ -424,6 +436,7 @@ namespace Galaxy_Swapper_v2.Workspace.Properties
             return true;
         }
 
+        // Cette méthode sert à libérer les ressources utilisées par UEFNProvider
         public static void Dispose()
         {
             CProviderManager.UEFNProvider?.Dispose();
