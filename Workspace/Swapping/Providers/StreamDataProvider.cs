@@ -12,6 +12,7 @@ using static Galaxy_Swapper_v2.Workspace.Global;
 
 namespace Galaxy_Swapper_v2.Workspace.Swapping.Providers
 {
+    // Décompresse des données téléchargées depuis un lien path
     public static class StreamDataProvider
     {
         private const string Domain = "https://galaxyswapperv2.com/API/StreamData/{0}.chunk";
